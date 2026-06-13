@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MotiVida Academia | Caxias do Sul - Treine com propósito</title>
+<meta name="description" content="MotiVida Academia em Caxias do Sul. Estrutura premium, modalidades completas e acompanhamento de resultados reais. Matricule-se hoje.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0E1610;
+    --bg-soft: #131F1A;
+    --card: #18241F;
+    --line: #28362F;
+    --text: #F3F6F2;
+    --text-dim: #9BABA3;
+    --lime: #A8D14A;
+    --blue: #2C5C9E;
+    --coral: #2C5C9E;
+    --display: "Anton", sans-serif;
+    --body: "Inter", sans-serif;
+    --mono: "Space Mono", monospace;
+    --radius: 14px;
+  }
+
+  *{margin:0; padding:0; box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+
+  .container{
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ===== Reveal animations ===== */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{scroll-behavior:auto;}
+  }
+
+  /* ===== Header ===== */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:1000;
+    background:rgba(14,18,16,0.75);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  header.scrolled{
+    border-bottom:1px solid var(--line);
+    background:rgba(14,18,16,0.92);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 24px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .logo{
+    font-family:var(--display);
+    font-size:24px;
+    letter-spacing:1px;
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo span{color:var(--lime);}
+  .logo-icon{
+    height:44px;
+    width:auto;
+    display:block;
+  }
+  .logo-img{
+    height:52px;
+    width:auto;
+    display:block;
+  }
+  .nav-links{
+    display:flex;
+    gap:32px;
+    list-style:none;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+  }
+  .nav-links a{
+    color:var(--text-dim);
+    transition:color .25s ease;
+    position:relative;
+  }
+  .nav-links a:hover{color:var(--lime);}
+  .nav-cta{
+    background:var(--lime);
+    color:#0E1610;
+    padding:12px 24px;
+    border-radius:999px;
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    transition:transform .25s ease, box-shadow .25s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(168,209,74,.25);
+  }
+  .nav-cta-mobile{display:none;}
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+    background:none;
+    border:none;
+    padding:8px;
+  }
+  .menu-toggle span{
+    width:26px; height:2px;
+    background:var(--text);
+    border-radius:2px;
+    transition:.3s ease;
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:90px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 75% 20%, rgba(168,209,74,0.12), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 10% 90%, rgba(44,92,158,0.10), transparent 60%),
+      linear-gradient(180deg, #0E1610 0%, #101512 100%);
+  }
+  .hero-grid{
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:linear-gradient(180deg, rgba(0,0,0,.6), transparent 70%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:1200px;
+    margin:0 auto;
+    padding:60px 24px;
+    width:100%;
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--lime);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    margin-bottom:24px;
+    border:1px solid rgba(168,209,74,.3);
+    padding:8px 16px;
+    border-radius:999px;
+    background:rgba(168,209,74,.06);
+  }
+  .hero-eyebrow .dot{
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--lime);
+    animation:pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1; transform:scale(1);}
+    50%{opacity:.4; transform:scale(.8);}
+  }
+  .hero h1{
+    font-family:var(--display);
+    font-size:clamp(48px, 8vw, 96px);
+    line-height:1.02;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .hero h1 .accent{color:var(--lime);}
+  .hero p.lead{
+    font-size:clamp(17px, 2vw, 20px);
+    color:var(--text-dim);
+    max-width:520px;
+    margin-bottom:36px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:48px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:18px 36px;
+    border-radius:999px;
+    font-weight:800;
+    font-size:14px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    cursor:pointer;
+    border:none;
+  }
+  .btn-primary{
+    background:var(--lime);
+    color:#0E1610;
+  }
+  .btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 32px rgba(168,209,74,.3);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:var(--text);
+    border:1px solid var(--line);
+  }
+  .btn-ghost:hover{
+    border-color:var(--text);
+    background:rgba(255,255,255,.03);
+  }
+
+  .hero-stats{
+    display:flex;
+    gap:36px;
+    flex-wrap:wrap;
+  }
+  .stat{
+    font-family:var(--mono);
+  }
+  .stat-num{
+    font-size:clamp(28px, 4vw, 40px);
+    font-weight:700;
+    color:var(--lime);
+    line-height:1;
+  }
+  .stat-label{
+    font-size:12px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-top:6px;
+  }
+
+  /* Hero visual side */
+  .hero-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:24px;
+    overflow:hidden;
+    background:linear-gradient(155deg, #1d2a23 0%, #0c1310 100%);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:flex-end;
+  }
+  .hero-visual::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(168,209,74,.18), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(44,92,158,.15), transparent 45%);
+  }
+  .hero-visual-content{
+    position:relative;
+    z-index:2;
+    padding:32px;
+    width:100%;
+  }
+  .hero-visual-badge{
+    background:rgba(14,18,16,.85);
+    backdrop-filter:blur(8px);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:20px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .hero-visual-badge .label{
+    font-size:13px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:4px;
+  }
+  .hero-visual-badge .value{
+    font-family:var(--mono);
+    font-size:28px;
+    font-weight:700;
+    color:var(--text);
+  }
+  .pulse-ring{
+    width:52px; height:52px;
+    border-radius:50%;
+    border:2px solid var(--lime);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .pulse-ring::after{
+    content:"";
+    position:absolute;
+    inset:-6px;
+    border-radius:50%;
+    border:1px solid rgba(168,209,74,.3);
+    animation:ringgrow 2.4s ease-out infinite;
+  }
+  @keyframes ringgrow{
+    0%{transform:scale(.8); opacity:1;}
+    100%{transform:scale(1.6); opacity:0;}
+  }
+
+  .hero-shapes{
+    position:absolute;
+    top:18%;
+    left:8%;
+    width:120px; height:120px;
+    border:1px solid rgba(168,209,74,.25);
+    border-radius:50%;
+    z-index:1;
+  }
+
+  /* ===== Section base ===== */
+  section{
+    padding:120px 0;
+    position:relative;
+  }
+  .section-header{
+    margin-bottom:64px;
+    max-width:680px;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:var(--coral);
+    margin-bottom:16px;
+    display:block;
+  }
+  h2{
+    font-family:var(--display);
+    font-size:clamp(36px, 5vw, 60px);
+    text-transform:uppercase;
+    line-height:1.05;
+    letter-spacing:.5px;
+  }
+  h2 .accent{color:var(--lime);}
+  .section-lead{
+    color:var(--text-dim);
+    font-size:18px;
+    margin-top:20px;
+    max-width:560px;
+  }
+
+  /* ===== About ===== */
+  .about{
+    background:var(--bg-soft);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .about-visual{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:24px;
+    background:linear-gradient(135deg, #1A2420, #0E1610);
+    border:1px solid var(--line);
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr 1fr;
+  }
+  .about-visual .cell{
+    border:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    padding:28px;
+    transition:background .3s ease;
+  }
+  .about-visual .cell:hover{background:rgba(168,209,74,.04);}
+  .about-visual .cell .num{
+    font-family:var(--mono);
+    font-size:36px;
+    font-weight:700;
+    color:var(--lime);
+  }
+  .about-visual .cell .lbl{
+    font-size:13px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin-top:8px;
+  }
+  .about-text p{
+    color:var(--text-dim);
+    font-size:17px;
+    margin-bottom:20px;
+  }
+  .about-text p strong{color:var(--text);}
+
+  /* ===== Differentials ===== */
+  .diff-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .diff-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:36px 28px;
+    transition:transform .35s ease, border-color .35s ease, background .35s ease;
+  }
+  .diff-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(168,209,74,.4);
+    background:#1E2A24;
+  }
+  .diff-icon{
+    width:52px; height:52px;
+    border-radius:14px;
+    background:rgba(168,209,74,.1);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:24px;
+    color:var(--lime);
+  }
+  .diff-card h3{
+    font-family:var(--display);
+    font-size:22px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:12px;
+  }
+  .diff-card p{
+    color:var(--text-dim);
+    font-size:15px;
+  }
+
+  /* ===== Modalidades ===== */
+  .modalidades{background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .mod-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .mod-item{
+    background:var(--card);
+    padding:40px 24px;
+    transition:background .3s ease;
+    position:relative;
+  }
+  .mod-item:hover{background:#1E2A24;}
+  .mod-tag{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--coral);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:16px;
+    display:block;
+  }
+  .mod-item h3{
+    font-family:var(--display);
+    font-size:24px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .mod-item p{
+    font-size:14px;
+    color:var(--text-dim);
+  }
+
+  /* ===== Estrutura ===== */
+  .estrutura-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-template-rows:repeat(2, 220px);
+    gap:16px;
+  }
+  .est-item{
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    background:linear-gradient(150deg, #1A2420, #0E1610);
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    position:relative;
+    overflow:hidden;
+    transition:transform .35s ease;
+  }
+  .est-item:hover{transform:scale(1.02);}
+  .est-item.big{grid-column:span 2; grid-row:span 2;}
+  .est-item::before{
+    content:"";
+    position:absolute;
+    top:-40%; right:-40%;
+    width:200px; height:200px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(168,209,74,.12), transparent 70%);
+  }
+  .est-item h4{
+    font-family:var(--display);
+    font-size:clamp(20px, 2.5vw, 32px);
+    text-transform:uppercase;
+    position:relative; z-index:1;
+  }
+  .est-item p{
+    color:var(--text-dim);
+    font-size:14px;
+    margin-top:8px;
+    position:relative; z-index:1;
+  }
+  .est-item.big h4{font-size:clamp(28px, 4vw, 44px);}
+
+  /* ===== Galeria ===== */
+  .galeria{background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    grid-auto-rows:140px;
+    gap:12px;
+  }
+  .g-item{
+    border-radius:10px;
+    background:linear-gradient(140deg, #1d2a23, #0d1310);
+    border:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:16px;
+    transition:transform .35s ease, border-color .35s ease;
+  }
+  .g-item:hover{transform:scale(1.03); border-color:rgba(168,209,74,.4); z-index:2;}
+  .g-item::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 70% 30%, rgba(44,92,158,.12), transparent 60%);
+  }
+  .g-item span{
+    position:relative; z-index:1;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+  }
+  .g-item.s1{grid-column:span 2; grid-row:span 2;}
+  .g-item.s2{grid-column:span 2;}
+  .g-item.s3{grid-column:span 2; grid-row:span 2;}
+  .g-item.s4{grid-column:span 2;}
+  .g-item.s5{grid-column:span 2;}
+  .g-item.s6{grid-column:span 2;}
+
+  /* ===== Depoimentos ===== */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .testi-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .stars{
+    color:var(--lime);
+    font-size:16px;
+    letter-spacing:3px;
+  }
+  .testi-card p.quote{
+    font-size:16px;
+    color:var(--text);
+  }
+  .testi-author{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:auto;
+  }
+  .avatar{
+    width:46px; height:46px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--lime), var(--coral));
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display);
+    color:#0E1610;
+    font-size:18px;
+  }
+  .author-name{font-weight:700; font-size:14px;}
+  .author-info{font-size:13px; color:var(--text-dim);}
+
+  /* ===== Planos ===== */
+  .planos{background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .plans-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    align-items:stretch;
+  }
+  .plan-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:40px 32px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    transition:transform .35s ease, border-color .35s ease;
+  }
+  .plan-card:hover{transform:translateY(-8px);}
+  .plan-card.featured{
+    border-color:var(--lime);
+    background:linear-gradient(160deg, #1E2A24, #161D1A);
+  }
+  .plan-badge{
+    position:absolute;
+    top:-14px; right:32px;
+    background:var(--lime);
+    color:#0E1610;
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:700;
+    padding:6px 16px;
+    border-radius:999px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .plan-name{
+    font-family:var(--display);
+    font-size:26px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .plan-desc{font-size:14px; color:var(--text-dim); margin-bottom:24px;}
+  .plan-price{
+    font-family:var(--mono);
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:4px;
+  }
+  .plan-price span{font-size:16px; color:var(--text-dim); font-weight:400;}
+  .plan-period{font-size:13px; color:var(--text-dim); margin-bottom:28px;}
+  .plan-features{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-bottom:32px;
+    flex-grow:1;
+  }
+  .plan-features li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size:14px;
+    color:var(--text-dim);
+  }
+  .plan-features li::before{
+    content:"✓";
+    color:var(--lime);
+    font-weight:700;
+    flex-shrink:0;
+  }
+  .plan-btn{
+    width:100%;
+    text-align:center;
+    padding:16px;
+    border-radius:999px;
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--text);
+    transition:.25s ease;
+    cursor:pointer;
+  }
+  .plan-card.featured .plan-btn{
+    background:var(--lime);
+    color:#0E1610;
+    border:none;
+  }
+  .plan-btn:hover{
+    border-color:var(--lime);
+    color:var(--lime);
+  }
+  .plan-card.featured .plan-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 32px rgba(168,209,74,.25);
+    color:#0E1610;
+  }
+
+  /* ===== Location ===== */
+  .local-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .local-info h3{
+    font-family:var(--display);
+    font-size:24px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+    margin-top:28px;
+  }
+  .local-info h3:first-child{margin-top:0;}
+  .local-info p{color:var(--text-dim); font-size:15px;}
+  .map-box{
+    aspect-ratio:4/3;
+    border-radius:var(--radius);
+    background:linear-gradient(135deg,#1A2420,#0E1610);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .map-box::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:40px 40px;
+  }
+  .map-pin{
+    position:relative; z-index:1;
+    width:60px; height:60px;
+    border-radius:50%;
+    background:var(--coral);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 0 12px rgba(44,92,158,.15);
+  }
+
+  .terms{
+    margin-top:48px;
+    padding-top:32px;
+    border-top:1px solid var(--line);
+    font-size:13px;
+    color:var(--text-dim);
+  }
+  .terms summary{
+    cursor:pointer;
+    font-weight:700;
+    color:var(--text);
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    font-size:12px;
+  }
+  .terms summary::-webkit-details-marker{display:none;}
+  .terms summary::before{content:"+"; color:var(--lime); font-size:18px;}
+  .terms[open] summary::before{content:"–";}
+  .terms-content{margin-top:16px; line-height:1.8;}
+  .terms-content p{margin-bottom:10px;}
+
+  /* ===== Final CTA ===== */
+  .final-cta{
+    text-align:center;
+    background:linear-gradient(135deg, #1A2420, #0E1610);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:80px 32px;
+    margin:0 24px;
+    max-width:1152px;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta::before{
+    content:"";
+    position:absolute;
+    top:-50%; left:50%;
+    transform:translateX(-50%);
+    width:600px; height:600px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(168,209,74,.1), transparent 70%);
+  }
+  .final-cta h2{position:relative; z-index:1; margin-bottom:20px;}
+  .final-cta p{
+    position:relative; z-index:1;
+    color:var(--text-dim);
+    font-size:18px;
+    max-width:520px;
+    margin:0 auto 36px;
+  }
+  .final-cta .btn{position:relative; z-index:1;}
+
+  /* ===== Footer ===== */
+  footer{
+    border-top:1px solid var(--line);
+    padding:48px 0 32px;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:24px;
+  }
+  .footer-logo{
+    display:flex;
+    align-items:center;
+  }
+  .footer-links{
+    display:flex;
+    gap:28px;
+    font-size:13px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .footer-links a:hover{color:var(--lime);}
+  .footer-copy{
+    text-align:center;
+    color:var(--text-dim);
+    font-size:13px;
+    margin-top:32px;
+    font-family:var(--mono);
+  }
+
+  /* ===== WhatsApp float ===== */
+  .whatsapp-float{
+    position:fixed;
+    bottom:28px;
+    right:28px;
+    z-index:999;
+    width:62px; height:62px;
+    border-radius:50%;
+    background:#25D366;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 24px rgba(37,211,102,.4);
+    transition:transform .25s ease, box-shadow .25s ease;
+    animation:floatup 3s ease-in-out infinite;
+  }
+  .whatsapp-float:hover{
+    transform:scale(1.08);
+    box-shadow:0 12px 32px rgba(37,211,102,.5);
+  }
+  @keyframes floatup{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .whatsapp-float{animation:none;}
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 980px){
+    .hero-content{grid-template-columns:1fr; gap:40px;}
+    .hero-visual{order:-1; max-width:380px; margin:0 auto; aspect-ratio:4/3;}
+    .about-grid{grid-template-columns:1fr;}
+    .diff-grid{grid-template-columns:1fr 1fr;}
+    .mod-grid{grid-template-columns:1fr 1fr;}
+    .estrutura-grid{grid-template-columns:1fr 1fr; grid-template-rows:repeat(3, 180px);}
+    .est-item.big{grid-column:span 2; grid-row:span 1;}
+    .testi-grid{grid-template-columns:1fr;}
+    .plans-grid{grid-template-columns:1fr; max-width:440px; margin:0 auto;}
+    .local-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(4,1fr); grid-auto-rows:120px;}
+    .g-item.s1, .g-item.s3{grid-column:span 2; grid-row:span 2;}
+    .g-item.s2,.g-item.s4,.g-item.s5,.g-item.s6{grid-column:span 2;}
+  }
+
+  @media (max-width: 720px){
+    .nav-links{
+      position:fixed;
+      top:74px; left:0; right:0;
+      background:rgba(14,18,16,.97);
+      backdrop-filter:blur(12px);
+      flex-direction:column;
+      padding:24px;
+      gap:20px;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-110%);
+      transition:transform .35s ease;
+    }
+    .nav-links.open{transform:translateY(0);}
+    .menu-toggle{display:flex;}
+    .nav-cta{display:none;}
+    .nav-links .nav-cta-mobile{
+      display:inline-flex;
+      background:var(--lime);
+      color:#0E1610;
+      padding:14px 24px;
+      border-radius:999px;
+      justify-content:center;
+      font-weight:800;
+    }
+    section{padding:80px 0;}
+    .diff-grid{grid-template-columns:1fr;}
+    .mod-grid{grid-template-columns:1fr;}
+    .estrutura-grid{grid-template-columns:1fr; grid-template-rows:repeat(6, 160px);}
+    .est-item.big{grid-column:span 1;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:130px;}
+    .g-item.s1,.g-item.s2,.g-item.s3,.g-item.s4,.g-item.s5,.g-item.s6{grid-column:span 2; grid-row:span 1;}
+    .g-item.s1,.g-item.s3{grid-row:span 2;}
+    .hero-stats{gap:24px;}
+    .final-cta{padding:56px 24px; border-radius:16px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <nav class="nav">
+    <a href="#top" class="logo"><img src="logo_icon.png" alt="MotiVida" class="logo-icon">Moti<span>Vida</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#modalidades">Modalidades</a></li>
+      <li><a href="#estrutura">Estrutura</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#local">Localização</a></li>
+      <li><a href="https://wa.me/5554999999999" class="nav-cta-mobile">Matricule-se</a></li>
+    </ul>
+    <a href="https://wa.me/5554999999999" class="nav-cta">Matricule-se</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-shapes"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow"><span class="dot"></span> Caxias do Sul · Matrículas abertas</div>
+      <h1>Sua melhor versão <span class="accent">começa hoje</span></h1>
+      <p class="lead">Estrutura completa, treino personalizado e uma equipe que acompanha cada etapa da sua evolução. Na MotiVida, resultado não é promessa — é rotina.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5554999999999" class="btn btn-primary">Agendar aula experimental</a>
+        <a href="#planos" class="btn btn-ghost">Ver planos</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Anos em Caxias</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">900+</div>
+          <div class="stat-label">Alunos ativos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">25</div>
+          <div class="stat-label">Modalidades</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4.9★</div>
+          <div class="stat-label">Avaliação Google</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-content">
+        <div class="hero-visual-badge">
+          <div>
+            <div class="label">Meta semanal</div>
+            <div class="value">5/5 treinos</div>
+          </div>
+          <div class="pulse-ring">●</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="about" id="sobre">
+  <div class="container about-grid">
+    <div class="reveal">
+      <div class="about-visual">
+        <div class="cell"><div class="num">2014</div><div class="lbl">Fundação</div></div>
+        <div class="cell"><div class="num">1200m²</div><div class="lbl">De estrutura</div></div>
+        <div class="cell"><div class="num">+30</div><div class="lbl">Profissionais</div></div>
+        <div class="cell"><div class="num">06–23h</div><div class="lbl">Horário de funcionamento</div></div>
+      </div>
+    </div>
+    <div class="reveal about-text">
+      <span class="eyebrow">Quem somos</span>
+      <h2>Mais que uma academia, um <span class="accent">ponto de virada</span></h2>
+      <p style="margin-top:24px;">A <strong>MotiVida</strong> nasceu em Caxias do Sul com um propósito simples: tornar o treino algo que as pessoas querem fazer — e não apenas precisam fazer. Construímos um ambiente onde cada detalhe, da iluminação ao acolhimento na recepção, foi pensado para que você se sinta motivado a voltar.</p>
+      <p>Ao longo de mais de uma década, montamos uma equipe de profissionais que acompanha de perto a evolução de cada aluno, com avaliações físicas periódicas, planejamento individualizado e muito incentivo no dia a dia.</p>
+      <p>Aqui, iniciantes encontram acolhimento e orientação; atletas encontram estrutura e intensidade. O resultado é o mesmo para todos: progresso visível, semana após semana.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Por que a MotiVida</span>
+      <h2>Diferenciais que fazem <span class="accent">a diferença</span></h2>
+      <p class="section-lead">Reunimos o que há de melhor em estrutura, profissionais e tecnologia para que o seu único trabalho seja aparecer e treinar.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card reveal">
+        <div class="diff-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M4 8l8-6 8 6M4 16l8 6 8-6"/></svg>
+        </div>
+        <h3>Avaliação física completa</h3>
+        <p>Acompanhamento de composição corporal, postura e evolução a cada 30 dias, com relatório individual.</p>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Horário estendido</h3>
+        <p>Funcionamento das 6h às 23h, de segunda a sábado, para encaixar o treino na sua rotina, não o contrário.</p>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+        </div>
+        <h3>Equipe sempre presente</h3>
+        <p>Professores em todos os turnos para corrigir execução, ajustar cargas e manter você motivado.</p>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0"/><path d="M12 8v4l3 2"/></svg>
+        </div>
+        <h3>Equipamentos de última geração</h3>
+        <p>Linha completa de musculação importada e cardio com tecnologia de monitoramento integrado.</p>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Ambiente acolhedor</h3>
+        <p>Espaço climatizado, vestiários completos e uma comunidade que recebe bem quem está começando.</p>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+        </div>
+        <h3>Foco em resultado</h3>
+        <p>Planejamento de treino com metas claras e revisão periódica para garantir que você está evoluindo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODALIDADES -->
+<section class="modalidades" id="modalidades">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Modalidades</span>
+      <h2>Treine do seu <span class="accent">jeito</span></h2>
+      <p class="section-lead">De musculação a aulas coletivas de alta energia: encontre o formato que combina com seu objetivo e mantenha a consistência sem enjoar.</p>
+    </div>
+    <div class="mod-grid reveal">
+      <div class="mod-item">
+        <span class="mod-tag">Força</span>
+        <h3>Musculação</h3>
+        <p>Treinos individualizados com acompanhamento técnico em todas as máquinas e áreas livres.</p>
+      </div>
+      <div class="mod-item">
+        <span class="mod-tag">Alta intensidade</span>
+        <h3>Funcional & HIIT</h3>
+        <p>Aulas dinâmicas que combinam força, resistência e queima calórica em sessões curtas e intensas.</p>
+      </div>
+      <div class="mod-item">
+        <span class="mod-tag">Energia</span>
+        <h3>Spinning</h3>
+        <p>Aulas de ciclismo indoor com trilhas sonoras motivacionais e instrutores certificados.</p>
+      </div>
+      <div class="mod-item">
+        <span class="mod-tag">Mente & corpo</span>
+        <h3>Yoga & Pilates</h3>
+        <p>Sessões focadas em mobilidade, postura e respiração — o complemento ideal para qualquer rotina.</p>
+      </div>
+      <div class="mod-item">
+        <span class="mod-tag">Resistência</span>
+        <h3>Esteiras & Cardio</h3>
+        <p>Área de cardio ampla com vista para o ambiente externo e equipamentos com painéis inteligentes.</p>
+      </div>
+      <div class="mod-item">
+        <span class="mod-tag">Defesa pessoal</span>
+        <h3>Lutas</h3>
+        <p>Modalidades como Muay Thai e Jiu-Jitsu para quem busca técnica, disciplina e condicionamento.</p>
+      </div>
+      <div class="mod-item">
+        <span class="mod-tag">Coletivo</span>
+        <h3>Aulas em grupo</h3>
+        <p>Cronograma diário de aulas para todos os níveis, com energia de equipe para te manter no foco.</p>
+      </div>
+      <div class="mod-item">
+        <span class="mod-tag">Personal</span>
+        <h3>Treino personalizado</h3>
+        <p>Acompanhamento individual com profissional dedicado para acelerar seus resultados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTRUTURA -->
+<section id="estrutura">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Estrutura</span>
+      <h2>Um espaço pensado para <span class="accent">o seu treino</span></h2>
+      <p class="section-lead">1.200m² distribuídos entre salas climatizadas, área de musculação ampla, estúdios para aulas coletivas e espaços de convivência.</p>
+    </div>
+    <div class="estrutura-grid reveal">
+      <div class="est-item big">
+        <h4>Área de musculação</h4>
+        <p>Mais de 60 estações de equipamentos de força, organizados por grupo muscular.</p>
+      </div>
+      <div class="est-item">
+        <h4>Estúdio funcional</h4>
+        <p>Espaço amplo para aulas em grupo e treinos com peso livre.</p>
+      </div>
+      <div class="est-item">
+        <h4>Sala de spinning</h4>
+        <p>Bicicletas premium com iluminação e som imersivos.</p>
+      </div>
+      <div class="est-item">
+        <h4>Vestiários completos</h4>
+        <p>Armários, chuveiros e área de banho climatizada.</p>
+      </div>
+      <div class="est-item">
+        <h4>Espaço wellness</h4>
+        <p>Sala de yoga, pilates e alongamento guiado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="galeria" id="galeria">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Galeria</span>
+      <h2>Conheça por dentro a <span class="accent">MotiVida</span></h2>
+      <p class="section-lead">Um vislumbre do ambiente que te espera todos os dias — moderno, organizado e feito para o seu progresso.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="g-item s1"><span>Área de musculação</span></div>
+      <div class="g-item s2"><span>Aula funcional</span></div>
+      <div class="g-item s4"><span>Recepção</span></div>
+      <div class="g-item s3"><span>Estúdio de spinning</span></div>
+      <div class="g-item s5"><span>Cardio</span></div>
+      <div class="g-item s6"><span>Espaço wellness</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>Quem treina, <span class="accent">recomenda</span></h2>
+      <p class="section-lead">Histórias reais de alunos que transformaram a rotina — e os resultados — na MotiVida.</p>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Entrei na MotiVida sem nunca ter pisado em uma academia e a equipe me deixou super à vontade desde o primeiro dia. Em 6 meses já vi diferença real no meu corpo e na minha disposição.</p>
+        <div class="testi-author">
+          <div class="avatar">C</div>
+          <div>
+            <div class="author-name">Camila Rossato</div>
+            <div class="author-info">Aluna há 8 meses</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Estrutura impecável e equipamentos sempre em dia. O acompanhamento dos professores faz toda a diferença — eles realmente sabem o que estão fazendo e te corrigem na hora.</p>
+        <div class="testi-author">
+          <div class="avatar">R</div>
+          <div>
+            <div class="author-name">Rodrigo Bianchi</div>
+            <div class="author-info">Aluno há 2 anos</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">As aulas de funcional são incríveis, sempre tem gente nova e o clima é muito leve. Voltei a sentir prazer em treinar depois de muito tempo parada.</p>
+        <div class="testi-author">
+          <div class="avatar">L</div>
+          <div>
+            <div class="author-name">Letícia Fontana</div>
+            <div class="author-info">Aluna há 1 ano</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section class="planos" id="planos">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Planos</span>
+      <h2>Escolha o plano que <span class="accent">acompanha você</span></h2>
+      <p class="section-lead">Sem taxas escondidas, sem letras pequenas. Cancele ou troque seu plano quando quiser direto na recepção.</p>
+    </div>
+    <div class="plans-grid reveal">
+      <div class="plan-card">
+        <div class="plan-name">Start</div>
+        <p class="plan-desc">Ideal para quem está começando e quer criar o hábito do treino.</p>
+        <div class="plan-price">R$ 99<span>/mês</span></div>
+        <div class="plan-period">Fidelidade de 6 meses</div>
+        <ul class="plan-features">
+          <li>Acesso à área de musculação e cardio</li>
+          <li>1 avaliação física por trimestre</li>
+          <li>App de acompanhamento de treino</li>
+          <li>Horário comercial</li>
+        </ul>
+        <a href="https://wa.me/5554999999999" class="plan-btn">Quero esse plano</a>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-badge">Mais escolhido</div>
+        <div class="plan-name">Performance</div>
+        <p class="plan-desc">O equilíbrio ideal entre estrutura completa e liberdade de horário.</p>
+        <div class="plan-price">R$ 139<span>/mês</span></div>
+        <div class="plan-period">Sem fidelidade</div>
+        <ul class="plan-features">
+          <li>Acesso total à academia, 6h às 23h</li>
+          <li>Todas as aulas coletivas inclusas</li>
+          <li>Avaliação física mensal</li>
+          <li>Acesso ao espaço wellness</li>
+          <li>App de acompanhamento de treino</li>
+        </ul>
+        <a href="https://wa.me/5554999999999" class="plan-btn">Quero esse plano</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Elite</div>
+        <p class="plan-desc">Para quem quer acelerar resultados com acompanhamento individual.</p>
+        <div class="plan-price">R$ 219<span>/mês</span></div>
+        <div class="plan-period">Sem fidelidade</div>
+        <ul class="plan-features">
+          <li>Tudo do plano Performance</li>
+          <li>2 sessões de treino personalizado por semana</li>
+          <li>Plano alimentar com nutricionista parceiro</li>
+          <li>Prioridade de horário nas aulas</li>
+          <li>Acesso a workshops exclusivos</li>
+        </ul>
+        <a href="https://wa.me/5554999999999" class="plan-btn">Quero esse plano</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCALIZAÇÃO E TERMOS -->
+<section id="local">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Localização</span>
+      <h2>Venha nos <span class="accent">conhecer</span></h2>
+      <p class="section-lead">Estamos no coração de Caxias do Sul, com fácil acesso e estacionamento próprio.</p>
+    </div>
+    <div class="local-grid reveal">
+      <div class="map-box">
+        <div class="map-pin">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E1610" stroke-width="2.5"><path d="M12 21s-7-6-7-11a7 7 0 1 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        </div>
+      </div>
+      <div class="local-info">
+        <h3>Endereço</h3>
+        <p>Rua Os Dezoito do Forte, 1234 — Centro<br>Caxias do Sul, RS — CEP 95010-000</p>
+
+        <h3>Horário de funcionamento</h3>
+        <p>Segunda a sexta: 06h às 23h<br>Sábados: 08h às 18h<br>Domingos e feriados: fechado</p>
+
+        <h3>Contato</h3>
+        <p>WhatsApp: (54) 99999-9999<br>E-mail: contato@motividaacademia.com.br</p>
+
+        <details class="terms">
+          <summary>Termos e condições</summary>
+          <div class="terms-content">
+            <p>Os valores informados referem-se aos planos vigentes e podem ser reajustados anualmente conforme contrato.</p>
+            <p>O plano Start possui fidelidade mínima de 6 meses, com multa proporcional em caso de cancelamento antecipado. Os planos Performance e Elite não possuem fidelidade e podem ser cancelados com aviso prévio de 30 dias.</p>
+            <p>A avaliação física é obrigatória no momento da matrícula para liberação de acesso aos equipamentos.</p>
+            <p>Menores de 18 anos devem apresentar autorização dos responsáveis e atestado médico atualizado.</p>
+            <p>A MotiVida reserva-se o direito de alterar horários de funcionamento e cronograma de aulas mediante aviso prévio aos alunos.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="container">
+    <div class="final-cta reveal">
+      <span class="eyebrow">Pronto para começar?</span>
+      <h2>O único treino que <span class="accent">não conta</span> é o que você não faz</h2>
+      <p>Agende uma visita gratuita, conheça a estrutura e comece hoje mesmo. Sem compromisso, sem pegadinha — só o primeiro passo da sua transformação.</p>
+      <a href="https://wa.me/5554999999999" class="btn btn-primary">Agendar minha visita</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo"><img src="logo.png" alt="MotiVida Fitness Space" class="logo-img"></div>
+      <div class="footer-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#planos">Planos</a>
+        <a href="#local">Localização</a>
+        <a href="https://wa.me/5554999999999">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 MotiVida Academia — Caxias do Sul, RS. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5554999999999?text=Olá! Quero saber mais sobre os planos da MotiVida." class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M17.6 6.32A8.92 8.92 0 0 0 12.05 3a8.96 8.96 0 0 0-7.77 13.45L3 21l4.67-1.23a8.96 8.96 0 0 0 4.38 1.12h.01A8.96 8.96 0 0 0 21 12.04a8.93 8.93 0 0 0-3.4-5.72ZM12.06 19.4h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.74.75-2.74-.18-.28a7.42 7.42 0 0 1 11.65-9.06 7.36 7.36 0 0 1 2.18 5.27 7.43 7.43 0 0 1-7.53 7.27Zm4.07-5.56c-.22-.11-1.31-.65-1.52-.72-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.16-.48.05-.22-.11-.93-.34-1.78-1.1-.66-.58-1.1-1.31-1.23-1.53-.13-.22-.01-.34.11-.45.11-.11.25-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.03-.42-.07-.11-.32-.77-.62-1.53-.17-.42-.34-.36-.47-.37h-.41c-.13 0-.35.05-.53.27-.18.22-.7.69-.7 1.66s.72 1.92.82 2.05c.1.13 1.39 2.12 3.37 2.89 1.98.77 1.98.51 2.34.48.36-.03 1.31-.53 1.49-1.05.18-.51.18-.95.13-1.05-.05-.1-.18-.16-.39-.27Z"/></svg>
+</a>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
